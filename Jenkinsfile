@@ -1,17 +1,8 @@
 node {
-    stage('Build') {
-        sh 'echo "Hello World"'
-        sh '''
-            echo "Multiline shell steps works too"
-            ls -lah
-        '''
-    }
-
-    stage('Deploy') {
-        timeout(time: 3, unit: 'MINUTES') {
-            retry(5) {
-                echo "deploy stage"
-            }
+    /* Requires the Docker Pipeline plugin to be installed */
+    docker.image('node:14-alpine').inside {
+        stage('Test') {
+            sh 'node --version'
         }
     }
 }
