@@ -8,13 +8,11 @@ node {
     }
 
     stage('Deploy') {
-        steps {
-           timeout(time: 3, unit: 'MINUTES') {
-              retry(5) {
-                  echo "deploy thing"
-               }
-           }
-      }
+        timeout(time: 3, unit: 'MINUTES') {
+            retry(5) {
+                echo "deploy stage"
+            }
+        }
     }
 }
 
